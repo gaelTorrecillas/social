@@ -26,7 +26,7 @@ class MailActivitySchedule(models.TransientModel):
             elif not scheduler.activity_team_id:
                 scheduler.activity_team_id = (
                     self.env["mail.activity"]
-                    .with_context(default_res_model=self.sudo().res_model_id.model)
+                    .with_context(default_res_model=scheduler.sudo().res_model_id.model)
                     ._get_default_team_id(user_id=scheduler.activity_team_user_id.id)
                 )
 
